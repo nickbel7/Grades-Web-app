@@ -1,0 +1,48 @@
+html {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border: 3px solid green;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 3px solid blue;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  max-width: 100% !important;
+  height: 100% !important;
+  padding: 0;
+  margin: 0;
+  border: 2px solid yellow;
+}
+
+#grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex start;
+  align-content: center;
+  justify-content: center;
+  /* border: 4px solid purple; */
+}
+
+.grid-item {
+  padding: 20px;
+  margin: 2vw;
+  overflow: hidden;
+  white-space: initial;
+}
+
+* {
+  border : 1px solid red;
+}

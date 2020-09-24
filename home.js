@@ -96,6 +96,8 @@ class UI {
 		
 	}
 }
+const data = localStorage.getItem('name-2');
+document.querySelector("#test-field").innerHTML = data;
 
 //load some data in local storage
 localStorage.setItem('name','Nick');

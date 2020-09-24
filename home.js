@@ -97,6 +97,9 @@ class UI {
 	}
 }
 
+//load some data in local storage
+localStorage.setItem('name','Nick');
+
 // Makes a field Editable
 var btnEdit = document.querySelector("#edit-btn");
 btnEdit.addEventListener('click', editAll);
@@ -112,5 +115,9 @@ btnSave.addEventListener('click', saveAll);
 function saveAll() {
 	var field = document.querySelector("#test-field");
 	field.setAttribute('contenteditable', false);
+	
+	localStorage.setItem('name-2', field.innerHTML);
+	
 	console.log('hello back');
+	console.log(field.innerHTML);
 }

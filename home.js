@@ -81,3 +81,36 @@ class Student {
 	}
 	
 }
+
+class UI {
+	static displayTerms() {
+		const terms = Student.getTerms();
+		
+		terms.forEach((term) => UI.addTermToList(term));
+	}
+	
+	static addTermToStudent(term) {
+		const list = document.querySelector('#terms-list');
+		
+		const object = document.createElement('tr');
+		
+	}
+}
+
+// Makes a field Editable
+var btnEdit = document.querySelector("#edit-btn");
+btnEdit.addEventListener('click', editAll);
+function editAll() {
+	var field = document.querySelector("#test-field");
+	field.setAttribute('contenteditable', true);
+	console.log('hello');
+}
+
+// Undos the ability to edit a field
+var btnSave = document.querySelector("#save-btn");
+btnSave.addEventListener('click', saveAll);
+function saveAll() {
+	var field = document.querySelector("#test-field");
+	field.setAttribute('contenteditable', false);
+	console.log('hello back');
+}

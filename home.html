@@ -12,29 +12,52 @@
     <title>Home</title>
   </head>
   <body>
+   	<!-- APPLICATION CONTAINER -->
     <div class="container">
+      
+      <!-- LEFT SIDE PANEL -->
       <div id="menu" class="col-3">
         <div id="menu-logo"></div>
         <div id="menu-list"></div>
       </div>
+      
+      <!-- APPLICATION PANEL -->
       <div id="grid" class="col-9">
-        <div id="grid-header"></div>
+      	<!-- HEADER (should include field for name and average grade) -->
+        <div id="grid-header">
+        </div>
+        
+        <!-- GRID FOR TERMS -->
         <div id="grid-matrix">
+        
+          <!-- TERM CONTAINER -->
           <div class="grid-item col-3">1asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf</div>
+          
+          <!-- TERM CONTAINER -->
           <div class="grid-item col-3">
+          	<!-- TERM HEADER (should include term title and avg grade field -->
             <div class="item-header">2o εξάμηνο</div>
+            
+            <!-- TERM CONTEXT (parent container of the subjects) -->
             <div class="item-list">
+            
+              <!-- SUBJECT CONTAINER -->
               <div class="subject">
                 <div class="subject-name col-9">Στοχαστικά συστήματα επικοινωνιών</div>
                 <div class="subject-grade col-3">?</div>
               </div>
+              
               <div class="subject">
                 <div id="test-field" class="subject-name col-9"></div>
                 <div class="subject-grade col-3">8</div>
               </div>
+              
+              <!-- ADD BUTTON (should only appear when in edit mode) -->
               <div class="add-subject btn btn-primary subject">ADD</div>
+              
             </div>
           </div>
+          
           <div class="grid-item col-3">3</div>
           <div class="grid-item col-3">4</div>
           <div class="grid-item col-3">5</div>

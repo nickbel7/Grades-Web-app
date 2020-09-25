@@ -10,6 +10,8 @@ class Subject {
 class Term {
 	constructor(){
 		this.id = Student.getNextId();
+		this.title = "";
+		this.avg = null;
 		this.subjects = [];
 	}
 	/*
@@ -57,7 +59,7 @@ class Student {
 	}
 	
 	static addTerm(term) {
-		const terms = Student.getTerms();
+		var terms = Student.getTerms();
 		terms.push(term);
 		localStorage.setItem('terms', JSON.stringify(terms));
 	}
@@ -123,3 +125,16 @@ function saveAll() {
 	console.log('hello back');
 	console.log(field.innerHTML);
 }
+
+localStorage.removeItem('terms');
+var term1 = new Term();
+term1.title = 'Term #1';
+term1.avg = 8.2;
+term1.subjects.push(new Subject('subject1', 'grade1'));
+term1.subjects.push(new Subject('subject2', 'grade2'));
+Student.addTerm(term1);
+
+var term2 = new Term();
+Student.addTerm(term2);
+
+

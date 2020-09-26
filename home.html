@@ -6,35 +6,96 @@
     <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
     <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous"> -->
     <!-- <link rel="stylesheet" href="https://bootswatch.com/4/yeti/bootstrap.min.css"> -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="home.css">
 
     <title>Home</title>
   </head>
   <body>
+   	<!-- APPLICATION CONTAINER -->
     <div class="container">
+
+      <!-- LEFT SIDE PANEL -->
       <div id="menu" class="col-3">
         <div id="menu-logo"></div>
         <div id="menu-list"></div>
       </div>
+
+      <!-- APPLICATION PANEL -->
       <div id="grid" class="col-9">
-        <div id="grid-header"></div>
+      	<!-- HEADER (should include field for name and average grade) -->
+        <div id="grid-header">
+        </div>
+
+        <!-- GRID FOR TERMS -->
         <div id="grid-matrix">
+
+          <!-- TERM CONTAINER -->
           <div class="grid-item col-3">1asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf</div>
-          <div class="grid-item col-3">
-            <div class="item-header">2o εξάμηνο</div>
+
+          <!-- TERM CONTAINER -->
+          <div class="term grid-item col-3">
+          	<!-- TERM HEADER (should include term title and avg grade field -->
+            <div class="item-header">
+              <div class="item-header-title">
+                2o εξάμηνο
+              </div>
+              <div class="item-header-avg">
+                8.9
+              </div>
+            </div>
+
+            <!-- TERM CONTEXT (parent container of the subjects) -->
             <div class="item-list">
+
+              <!-- SUBJECT CONTAINER -->
               <div class="subject">
                 <div class="subject-name col-9">Στοχαστικά συστήματα επικοινωνιών</div>
                 <div class="subject-grade col-3">?</div>
               </div>
+
               <div class="subject">
                 <div id="test-field" class="subject-name col-9"></div>
                 <div class="subject-grade col-3">8</div>
               </div>
+
+              <!-- ADD BUTTON (should only appear when in edit mode) -->
               <div class="add-subject btn btn-primary subject">ADD</div>
+
             </div>
           </div>
+
+          <div class="term grid-item col-3">
+          	<!-- TERM HEADER (should include term title and avg grade field -->
+            <div class="item-header">
+              <div class="item-header-title">
+                3o εξάμηνο
+              </div>
+              <div class="item-header-avg">
+                8.0
+              </div>
+            </div>
+
+            <!-- TERM CONTEXT (parent container of the subjects) -->
+            <div class="item-list">
+
+              <!-- SUBJECT CONTAINER -->
+              <div class="subject">
+                <div class="subject-name col-9">Στοχαστικά συστήματα επικοινωνιών</div>
+                <div class="subject-grade col-3">?</div>
+              </div>
+
+              <div class="subject">
+                <div id="test-field" class="subject-name col-9"></div>
+                <div class="subject-grade col-3">8</div>
+              </div>
+
+              <!-- ADD BUTTON (should only appear when in edit mode) -->
+              <div class="add-subject btn btn-primary subject">ADD</div>
+
+            </div>
+          </div>
+
           <div class="grid-item col-3">3</div>
           <div class="grid-item col-3">4</div>
           <div class="grid-item col-3">5</div>

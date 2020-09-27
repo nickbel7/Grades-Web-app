@@ -96,6 +96,10 @@ body {
   justify-content: center;
 }
 
+.add-subject {
+  display: block;
+}
+
 * {
   border : 1px solid red;
 }

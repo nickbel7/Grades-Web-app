@@ -7,6 +7,7 @@
     <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous"> -->
     <!-- <link rel="stylesheet" href="https://bootswatch.com/4/yeti/bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="home.css">
 
     <title>Home</title>
@@ -31,13 +32,10 @@
         <div id="grid-matrix">
 
           <!-- TERM CONTAINER -->
-          <div class="grid-item col-3">1asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf</div>
-
-          <!-- TERM CONTAINER -->
           <div class="term grid-item col-3">
           	<!-- TERM HEADER (should include term title and avg grade field -->
             <div class="item-header">
-              <div class="item-header-title">
+              <div class="item-header-title editable">
                 2o εξάμηνο
               </div>
               <div class="item-header-avg">
@@ -50,25 +48,25 @@
 
               <!-- SUBJECT CONTAINER -->
               <div class="subject">
-                <div class="subject-name col-9">Στοχαστικά συστήματα επικοινωνιών</div>
-                <div class="subject-grade col-3">?</div>
+                <div class="subject-name editable col-9">Στοχαστικά συστήματα επικοινωνιών</div>
+                <div class="subject-grade editable col-3">?</div>
               </div>
 
               <div class="subject">
-                <div id="test-field" class="subject-name col-9"></div>
-                <div class="subject-grade col-3">8</div>
+                <div id="test-field" class="editable subject-name col-9"></div>
+                <div class="subject-grade editable col-3">8</div>
               </div>
 
-              <!-- ADD BUTTON (should only appear when in edit mode) -->
-              <div class="add-subject btn btn-primary subject">ADD</div>
-
             </div>
+
+            <!-- ADD BUTTON (should only appear when in edit mode) -->
+            <div class="add-subject btn btn-primary subject">ADD</div>
           </div>
 
           <div class="term grid-item col-3">
           	<!-- TERM HEADER (should include term title and avg grade field -->
             <div class="item-header">
-              <div class="item-header-title">
+              <div class="item-header-title editable">
                 3o εξάμηνο
               </div>
               <div class="item-header-avg">
@@ -81,34 +79,26 @@
 
               <!-- SUBJECT CONTAINER -->
               <div class="subject">
-                <div class="subject-name col-9">Στοχαστικά συστήματα επικοινωνιών</div>
-                <div class="subject-grade col-3">?</div>
+                <div class="subject-name editable col-9">Στοχαστικά συστήματα επικοινωνιών</div>
+                <div class="subject-grade editable col-3">?</div>
               </div>
 
               <div class="subject">
-                <div id="test-field" class="subject-name col-9"></div>
-                <div class="subject-grade col-3">8</div>
+                <div id="test-field" class="subject-name editable col-9"></div>
+                <div class="subject-grade editable col-3">8</div>
               </div>
 
-              <!-- ADD BUTTON (should only appear when in edit mode) -->
-              <div class="add-subject btn btn-primary subject">ADD</div>
-
             </div>
+
+            <!-- ADD BUTTON (should only appear when in edit mode) -->
+            <div class="add-subject btn btn-primary subject">ADD</div>
           </div>
 
-          <div class="grid-item col-3">3</div>
-          <div class="grid-item col-3">4</div>
-          <div class="grid-item col-3">5</div>
-          <div class="grid-item col-3">6</div>
-          <div class="grid-item col-3">7</div>
-          <div class="grid-item col-3">8</div>
-          <div class="grid-item col-3">9</div>
-           <!-- KATI XAZO -->
-          <!-- ADD DIV -->
-          <div id="add-btn" class="add-grid-item btn btn-dark grid-item col-3">ADD</div>
-          <div id="edit-btn" class="add-grid-item btn btn-dark grid-item col-3">EDIT</div>
-          <div id="save-btn" class="add-grid-item btn btn-dark grid-item col-3">SAVE</div>
         </div>
+        <!-- ADD DIV -->
+        <div id="add-btn" class="add-grid-item btn btn-dark grid-item col-3">ADD</div>
+        <div id="edit-btn" class="add-grid-item btn btn-dark grid-item col-3">EDIT</div>
+        <div id="save-btn" class="add-grid-item btn btn-dark grid-item col-3">SAVE</div>
       </div>
     </div>
 

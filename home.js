@@ -101,36 +101,40 @@ class UI {
 
 		termDiv.innerHTML = `
 		<div class="item-header">
-			<div class="item-header-title">
-				2o εξάμηνο
+			<div class="item-header-title editable">
 			</div>
 			<div class="item-header-avg">
-				8.9
 			</div>
 		</div>
 
 		<!-- TERM CONTEXT (parent container of the subjects) -->
 		<div class="item-list">
 
-			<!-- SUBJECT CONTAINER -->
 			<div class="subject">
-				<div class="subject-name col-9"></div>
-				<div class="subject-grade col-3"></div>
+				<div id="test-field" class="subject-name editable col-9"></div>
+				<div class="subject-grade editable col-3"></div>
 			</div>
-
-			<div class="subject">
-				<div id="test-field" class="subject-name col-9"></div>
-				<div class="subject-grade col-3"></div>
-			</div>
-
-			<!-- ADD BUTTON (should only appear when in edit mode) -->
-			<div class="add-subject btn btn-primary subject">ADD</div>
 
 		</div>
+
+		<!-- ADD BUTTON (should only appear when in edit mode) -->
+		<div class="add-subject btn btn-primary subject">ADD</div>
 		`;
 
 		termsDivList.appendChild(termDiv);
+	}
 
+	static addSubjectToTerm(e) {
+		const subjectDiv = document.createElement('div');
+		subjectDiv.classList.add("subject");
+
+		subjectDiv.innerHTML = `
+			<div id="test-field" class="subject-name editable col-9"></div>
+			<div class="subject-grade editable col-3">8</div>
+		`;
+
+		e.appendChild(subjectDiv);
+		console.log('subject append works');
 	}
 
 }
@@ -142,23 +146,36 @@ document.querySelector("#test-field").innerHTML = data;
 //load some data in local storage
 localStorage.setItem('name','Nick');
 
-// Makes a field Editable
+// Makes all editable fields Editable
 var btnEdit = document.querySelector("#edit-btn");
 btnEdit.addEventListener('click', editAll);
 function editAll() {
-	var field = document.querySelector("#test-field");
-	field.setAttribute('contenteditable', true);
+	var editableFields = document.querySelectorAll(".editable");
+	for (var i = 0 ; i < editableFields.length ; i++) {
+		editableFields[i].setAttribute('contenteditable', true);
+	}
+	var addButtons = document.querySelectorAll(".add-subject");
+	for (var i = 0 ; i < addButtons.length ; i++) {
+		addButtons[i].style.display = "block";
+	}
 	console.log('hello');
 }
 
-// Undos the ability to edit a field
+// Undos the ability to edit all editable fields / hide add buttons
 var btnSave = document.querySelector("#save-btn");
 btnSave.addEventListener('click', saveAll);
 function saveAll() {
-	var field = document.querySelector("#test-field");
-	field.setAttribute('contenteditable', false);
+	var editableFields = document.querySelectorAll(".editable");
+	for (var i = 0 ; i < editableFields.length ; i++) {
+		editableFields[i].setAttribute('contenteditable', false);
+	}
+	// localStorage.setItem('name-2', field.innerHTML);
 
-	localStorage.setItem('name-2', field.innerHTML);
+	//set the display to "none" to all add-subject buttons
+	var addButtons = document.querySelectorAll(".add-subject");
+	for (var i = 0 ; i < addButtons.length ; i++) {
+		addButtons[i].style.display = "none";
+	}
 
 	console.log('hello back');
 	console.log(field.innerHTML);
@@ -171,6 +188,13 @@ function addDiv() {
 	UI.addTermToStudent();
 }
 
+//gets the subject list element when an 'add-subject' btn is clicked
+$(document).on("click", ".add-subject", function() {
+	subjectsList = $(this)[0].parentElement.children[1];
+	UI.addSubjectToTerm(subjectsList);
+});
+
+//Removes all Terms from localStorage
 localStorage.removeItem('terms');
 //
 // var term1 = new Term();

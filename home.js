@@ -109,13 +109,13 @@ class UI {
 
 		<!-- TERM CONTEXT (parent container of the subjects) -->
 		<div class="item-list">
-
+			<!--
 			<div class="subject">
 				<div class="remove-subject-btn"></div>
 				<div id="test-field" class="subject-name editable col-9"></div>
 				<div class="subject-grade editable col-3">8</div>
 			</div>
-
+			-->
 		</div>
 
 		<!-- ADD BUTTON (should only appear when in edit mode) -->
@@ -123,6 +123,8 @@ class UI {
 		`;
 
 		termsDivList.appendChild(termDiv);
+		
+		return termDiv;
 	}
     
 	static removeTermFromStudent() {
@@ -142,6 +144,8 @@ class UI {
 
 		e.appendChild(subjectDiv);
 		console.log('subject append works');
+		
+		return subjectDiv;
 	}
 	
 	static removeSubjectFromTerm(s) {
@@ -154,11 +158,29 @@ class UI {
 }
 
 
-const data = localStorage.getItem('name-2');
-document.querySelector("#test-field").innerHTML = data;
+// Load data from localStorage
+var data = Student.getTerms();
+if (data != null){
+	for (var i = 0 ; i < data.length ; i++) {
+		currentTerm = UI.addTermToStudent();
+		currentTerm.firstElementChild.children[0].innerText = data[i].title;
+		for (var j = 0 ; j < data[i].subjects.length ; j++) {
+			var currentSubject = UI.addSubjectToTerm(currentTerm.children[1]);
+			currentSubject.children[1].innerText = data[i].subjects[j].name;
+			currentSubject.children[2].innerText = data[i].subjects[j].grade;
+		}
+	}
+}
+//const data = localStorage.getItem('name-2');
+//document.querySelector("#test-field").innerHTML = data;
+
+
+
+
+
 
 //load some data in local storage
-localStorage.setItem('name','Nick');
+//localStorage.setItem('name','Nick');
 
 // EDIT / Makes all appropriate fields Editable
 var btnEdit = document.querySelector("#edit-btn");
@@ -187,6 +209,7 @@ function editAll() {
 var btnSave = document.querySelector("#save-btn");
 btnSave.addEventListener('click', saveAll);
 function saveAll() {
+	//Undos the ability to edit all editable fields
 	var editableFields = document.querySelectorAll(".editable");
 	for (var i = 0 ; i < editableFields.length ; i++) {
 		editableFields[i].setAttribute('contenteditable', false);
@@ -235,9 +258,6 @@ $(document).on("click", ".remove-subject-btn", function() {
 	UI.removeSubjectFromTerm(selectedSubject);
 });
 
-//Removes all Terms from localStorage
-localStorage.removeItem('terms');
-//
 // var term1 = new Term();
 // term1.title = 'Term #1';
 // term1.avg = 8.2;
@@ -248,21 +268,32 @@ localStorage.removeItem('terms');
 // var term2 = new Term();
 // Student.addTerm(term2);
 
-var termsTemp = document.querySelectorAll(".term");
-console.log(termsTemp);
-for (var i = 0 ; i < termsTemp.length ; i++) {
-	var term1 = new Term(); //create new term
-	var title = termsTemp[i].firstElementChild.children[0];
-	term1.title = title.innerText; //add term title
-	var avg = termsTemp[i].firstElementChild.children[1];
-	term1.avg = avg.innerText; //add term avg grade
 
-	var subjectsTemp = termsTemp[i].lastElementChild.children;
-	for (var index = 0 ; index < subjectsTemp.length - 1; index++) {
-		var subjectTitle = subjectsTemp[index].children[0].innerText;
-		var subjectGrade = subjectsTemp[index].children[1].innerText;
-		term1.subjects.push(new Subject(subjectTitle, subjectGrade));
+var btnTest = document.querySelector("#test-btn");
+btnTest.addEventListener('click', testFunc);
+function testFunc() {
+	//Removes all Terms from localStorage
+	localStorage.removeItem('terms');
+
+	var termsTemp = document.querySelectorAll(".term");
+	console.log(termsTemp);
+	for (var i = 0 ; i < termsTemp.length ; i++) {
+		var term1 = new Term(); //create new term
+		var title = termsTemp[i].firstElementChild.children[0];
+		term1.title = title.innerText; //add term title
+		var avg = termsTemp[i].firstElementChild.children[1];
+		term1.avg = avg.innerText; //add term avg grade
+
+//		console.log(termsTemp[i].children[1].children);
+		var subjectsTemp = termsTemp[i].children[1].children;
+//		var subjectsTemp = termsTemp[i].lastElementChild.children;
+		for (var index = 0 ; index < subjectsTemp.length ; index++) {
+			var subjectTitle = subjectsTemp[index].children[1].innerText;
+			var subjectGrade = subjectsTemp[index].children[2].innerText;
+			term1.subjects.push(new Subject(subjectTitle, subjectGrade));
+		}
+
+		Student.addTerm(term1); //add term to Student (loaclStorage)
 	}
-
-	Student.addTerm(term1); //add term to Student (loaclStorage)
 }
+

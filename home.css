@@ -82,6 +82,7 @@ body {
 
 .subject {
   display: flex;
+  width: 100%;
   flex-direction: row;
   overflow-wrap: break-word;
 }
@@ -94,6 +95,15 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.remove-subject-btn {
+	position: absolute; 
+	left: -40px; 
+	width: 40px; 
+	height: 20px; 
+	align-self: center; 
+	border: 1px solid red;
 }
 
 .add-subject {

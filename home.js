@@ -87,10 +87,10 @@ class Student {
 class UI {
 	static displayTerms() {
 		const terms = Student.getTerms();
-
+		
 		terms.forEach((term) => UI.addTermToList(term));
 	}
-
+	
 	static addTermToStudent() {
 		const termsDivList = document.querySelector('#grid-matrix');
 
@@ -111,8 +111,9 @@ class UI {
 		<div class="item-list">
 
 			<div class="subject">
+				<div class="remove-subject-btn"></div>
 				<div id="test-field" class="subject-name editable col-9"></div>
-				<div class="subject-grade editable col-3"></div>
+				<div class="subject-grade editable col-3">8</div>
 			</div>
 
 		</div>
@@ -129,12 +130,20 @@ class UI {
 		subjectDiv.classList.add("subject");
 
 		subjectDiv.innerHTML = `
+			<div class="remove-subject-btn"></div> 
 			<div id="test-field" class="subject-name editable col-9"></div>
 			<div class="subject-grade editable col-3">8</div>
 		`;
 
 		e.appendChild(subjectDiv);
 		console.log('subject append works');
+	}
+	
+	static removeSubjectFromTerm(s) {
+		var parent = s.parentElement;
+		parent.removeChild(s);
+		console.log('subject remove works');
+		console.log(parent);
 	}
 
 }
@@ -146,7 +155,7 @@ document.querySelector("#test-field").innerHTML = data;
 //load some data in local storage
 localStorage.setItem('name','Nick');
 
-// Makes all editable fields Editable
+// EDIT / Makes all appropriate fields Editable
 var btnEdit = document.querySelector("#edit-btn");
 btnEdit.addEventListener('click', editAll);
 function editAll() {
@@ -154,14 +163,22 @@ function editAll() {
 	for (var i = 0 ; i < editableFields.length ; i++) {
 		editableFields[i].setAttribute('contenteditable', true);
 	}
+	//set the display to "block" to all add-subject buttons
 	var addButtons = document.querySelectorAll(".add-subject");
 	for (var i = 0 ; i < addButtons.length ; i++) {
 		addButtons[i].style.display = "block";
 	}
+	
+	//set the display to "block" to all remove-subject buttons
+	var rmvButtons = document.querySelectorAll(".remove-subject-btn");
+	for (var i = 0 ; i < rmvButtons.length ; i++) {
+		rmvButtons[i].style.display = "block";
+	}
+	
 	console.log('hello');
 }
 
-// Undos the ability to edit all editable fields / hide add buttons
+// SAVE / Undos the ability to edit all editable fields / hide add buttons
 var btnSave = document.querySelector("#save-btn");
 btnSave.addEventListener('click', saveAll);
 function saveAll() {
@@ -176,9 +193,15 @@ function saveAll() {
 	for (var i = 0 ; i < addButtons.length ; i++) {
 		addButtons[i].style.display = "none";
 	}
-
+	
+	//set the display to "none" to all remove-subject buttons
+	var rmvButtons = document.querySelectorAll(".remove-subject-btn");
+	for (var i = 0 ; i < rmvButtons.length ; i++) {
+		rmvButtons[i].style.display = "none";
+	}
+	
 	console.log('hello back');
-	console.log(field.innerHTML);
+//	console.log(field.innerHTML);
 }
 
 // adds a new term DIV
@@ -192,6 +215,12 @@ function addDiv() {
 $(document).on("click", ".add-subject", function() {
 	subjectsList = $(this)[0].parentElement.children[1];
 	UI.addSubjectToTerm(subjectsList);
+});
+
+//gets the appropriate subject when a 'remove-subject-btn' is clicked
+$(document).on("click", ".remove-subject-btn", function() {
+	selectedSubject = $(this)[0].parentElement;
+	UI.removeSubjectFromTerm(selectedSubject);
 });
 
 //Removes all Terms from localStorage

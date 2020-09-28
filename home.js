@@ -124,7 +124,12 @@ class UI {
 
 		termsDivList.appendChild(termDiv);
 	}
-
+    
+	static removeTermFromStudent() {
+		const termsDivList = document.querySelector('#grid-matrix');
+		termsDivList.removeChild(termsDivList.lastElementChild);
+	}
+	
 	static addSubjectToTerm(e) {
 		const subjectDiv = document.createElement('div');
 		subjectDiv.classList.add("subject");
@@ -143,7 +148,7 @@ class UI {
 		var parent = s.parentElement;
 		parent.removeChild(s);
 		console.log('subject remove works');
-		console.log(parent);
+//		console.log(parent);
 	}
 
 }
@@ -209,6 +214,13 @@ var btnAdd = document.querySelector("#add-btn");
 btnAdd.addEventListener('click', addDiv);
 function addDiv() {
 	UI.addTermToStudent();
+}
+
+//removes a term DIV
+var btnRemove = document.querySelector("#remove-btn");
+btnRemove.addEventListener('click', rmvDiv);
+function rmvDiv() {
+	UI.removeTermFromStudent();
 }
 
 //gets the subject list element when an 'add-subject' btn is clicked

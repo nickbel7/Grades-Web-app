@@ -141,7 +141,7 @@ class UI {
 		subjectDiv.innerHTML = `
 			<div class="remove-subject-btn"></div> 
 			<div id="test-field" class="subject-name editable"></div>
-			<div class="subject-grade editable">8</div>
+			<div class="subject-grade editable"></div>
 		`;
 
 		e.appendChild(subjectDiv);
@@ -167,9 +167,11 @@ if (data != null){
 	for (var i = 0 ; i < data.length ; i++) {
 		currentTerm = UI.addTermToStudent();
 		currentTerm.firstElementChild.children[0].innerText = data[i].title;
-		currentTerm.firstElementChild.children[1].innerText = Math.floor(data[i].avg * 10) / 10;
+		currentTerm.firstElementChild.children[1].innerText = Math.round(data[i].avg * 10) / 10;
+		currentTerm.lastElementChild.style.display = "none";
 		for (var j = 0 ; j < data[i].subjects.length ; j++) {
 			var currentSubject = UI.addSubjectToTerm(currentTerm.children[1]);
+			currentSubject.children[0].style.display = "none";
 			currentSubject.children[1].innerText = data[i].subjects[j].name;
 			currentSubject.children[2].innerText = data[i].subjects[j].grade;
 		}
@@ -189,9 +191,10 @@ var btnEdit = document.querySelector("#edit-btn");
 btnEdit.addEventListener('click', editAll);
 function editAll() {
 	// display all buttons appropriate for edit 
-//	document.querySelector("#save-btn").style.display = "block";
-//	document.querySelector("#add-btn").style.display = "block";
-//	document.querySelector("#remove-btn").style.display = "block";
+	document.querySelector("#save-btn").style.display = "block";
+	document.querySelector("#add-btn").style.display = "block";
+	document.querySelector("#remove-btn").style.display = "block";
+	document.querySelector("#edit-btn").style.display = "none";
 	
 	var editableFields = document.querySelectorAll(".editable");
 	for (var i = 0 ; i < editableFields.length ; i++) {
@@ -216,11 +219,18 @@ function editAll() {
 var btnSave = document.querySelector("#save-btn");
 btnSave.addEventListener('click', saveAll);
 function saveAll() {
+	// display all buttons appropriate for view 
+	document.querySelector("#save-btn").style.display = "none";
+	document.querySelector("#add-btn").style.display = "none";
+	document.querySelector("#remove-btn").style.display = "none";
+	document.querySelector("#edit-btn").style.display = "block";
+	
 	//Undos the ability to edit all editable fields
 	var editableFields = document.querySelectorAll(".editable");
 	for (var i = 0 ; i < editableFields.length ; i++) {
 		editableFields[i].setAttribute('contenteditable', false);
 	}
+	
 	// localStorage.setItem('name-2', field.innerHTML);
 
 	//set the display to "none" to all add-subject buttons
@@ -263,7 +273,7 @@ function saveAll() {
 			term1.subjects.push(new Subject(subjectTitle, subjectGrade));
 		}
 		term1.avg = avg / validSubjects;
-		termsTemp[i].firstElementChild.children[1].innerText = Math.floor(term1.avg * 10) / 10;
+		termsTemp[i].firstElementChild.children[1].innerText = Math.round(term1.avg * 10) / 10;
 		
 		Student.addTerm(term1); //add term to Student (loaclStorage)
 	}

@@ -63,7 +63,7 @@ body {
 
 .grid-item {
   padding: 0;
-  margin: 2vw;
+  margin: 2vw; q
   overflow-wrap: break-word;
 }
 
@@ -129,7 +129,7 @@ body {
 }
 
 #add-btn,  #remove-btn, #save-btn{
-	/*display: none;*/
+	display: none;
 }
 
 * {

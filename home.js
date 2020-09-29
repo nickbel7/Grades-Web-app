@@ -63,8 +63,8 @@ class Student {
 		terms.push(term);
 		localStorage.setItem('terms', JSON.stringify(terms));
 	}
-	
-	
+
+
 	static removeTerm(id) {
 		const terms = Student.getTerms();
 		/*
@@ -89,10 +89,10 @@ class UI {
 	/*
 	static displayTerms() {
 		const terms = Student.getTerms();
-		
+
 		terms.forEach((term) => UI.addTermToList(term));
 	}*/
-	
+
 	static addTermToStudent() {
 		const termsDivList = document.querySelector('#grid-matrix');
 
@@ -126,21 +126,21 @@ class UI {
 
 		termsDivList.appendChild(termDiv);
 		termDiv.firstElementChild.children[0].setAttribute('contenteditable', true);
-		
+
 		return termDiv;
 	}
-    
+
 	static removeTermFromStudent() {
 		const termsDivList = document.querySelector('#grid-matrix');
 		termsDivList.removeChild(termsDivList.lastElementChild);
 	}
-	
+
 	static addSubjectToTerm(e) {
 		const subjectDiv = document.createElement('div');
 		subjectDiv.classList.add("subject");
 
 		subjectDiv.innerHTML = `
-			<div class="remove-subject-btn"></div> 
+			<div class="remove-subject-btn"></div>
 			<div id="test-field" class="subject-name editable"></div>
 			<div class="subject-grade editable"></div>
 		`;
@@ -151,7 +151,7 @@ class UI {
 		console.log('subject append works');
 		return subjectDiv;
 	}
-	
+
 	static removeSubjectFromTerm(s) {
 		var parent = s.parentElement;
 		parent.removeChild(s);
@@ -194,12 +194,12 @@ if (data != null){
 var btnEdit = document.querySelector("#edit-btn");
 btnEdit.addEventListener('click', editAll);
 function editAll() {
-	// display all buttons appropriate for edit 
+	// display all buttons appropriate for edit
 	document.querySelector("#save-btn").style.display = "block";
 	document.querySelector("#add-btn").style.display = "block";
 	document.querySelector("#remove-btn").style.display = "block";
 	document.querySelector("#edit-btn").style.display = "none";
-	
+
 	var editableFields = document.querySelectorAll(".editable");
 	for (var i = 0 ; i < editableFields.length ; i++) {
 		editableFields[i].setAttribute('contenteditable', true);
@@ -209,13 +209,13 @@ function editAll() {
 	for (var i = 0 ; i < addButtons.length ; i++) {
 		addButtons[i].style.display = "block";
 	}
-	
+
 	//set the display to "block" to all remove-subject buttons
 	var rmvButtons = document.querySelectorAll(".remove-subject-btn");
 	for (var i = 0 ; i < rmvButtons.length ; i++) {
 		rmvButtons[i].style.display = "block";
 	}
-	
+
 	console.log('hello');
 }
 
@@ -223,18 +223,18 @@ function editAll() {
 var btnSave = document.querySelector("#save-btn");
 btnSave.addEventListener('click', saveAll);
 function saveAll() {
-	// display all buttons appropriate for view 
+	// display all buttons appropriate for view
 	document.querySelector("#save-btn").style.display = "none";
 	document.querySelector("#add-btn").style.display = "none";
 	document.querySelector("#remove-btn").style.display = "none";
 	document.querySelector("#edit-btn").style.display = "block";
-	
+
 	//Undos the ability to edit all editable fields
 	var editableFields = document.querySelectorAll(".editable");
 	for (var i = 0 ; i < editableFields.length ; i++) {
 		editableFields[i].setAttribute('contenteditable', false);
 	}
-	
+
 	// localStorage.setItem('name-2', field.innerHTML);
 
 	//set the display to "none" to all add-subject buttons
@@ -242,13 +242,13 @@ function saveAll() {
 	for (var i = 0 ; i < addButtons.length ; i++) {
 		addButtons[i].style.display = "none";
 	}
-	
+
 	//set the display to "none" to all remove-subject buttons
 	var rmvButtons = document.querySelectorAll(".remove-subject-btn");
 	for (var i = 0 ; i < rmvButtons.length ; i++) {
 		rmvButtons[i].style.display = "none";
 	}
-	
+
 	//Removes all Terms from localStorage
 	localStorage.removeItem('terms');
 
@@ -276,12 +276,12 @@ function saveAll() {
 //			console.log(avg);
 			term1.subjects.push(new Subject(subjectTitle, subjectGrade));
 		}
-		term1.avg = avg / validSubjects == 0 ? 1 : 0;
+		term1.avg = validSubjects != 0 ? avg / validSubjects : 0 ;
 		termsTemp[i].firstElementChild.children[1].innerText = Math.round(term1.avg * 10) / 10;
-		
+
 		Student.addTerm(term1); //add term to Student (loaclStorage)
 	}
-	
+
 	alert("Saved successfully");
 	console.log('hello back');
 //	console.log(field.innerHTML);
@@ -338,7 +338,7 @@ function testFunc() {
 		term1.title = title.innerText; //add term title
 		var avg = termsTemp[i].firstElementChild.children[1];
 		term1.avg = avg.innerText; //add term avg grade
-		
+
 //		console.log(termsTemp[i].children[1].children);
 		var subjectsTemp = termsTemp[i].children[1].children;
 //		var subjectsTemp = termsTemp[i].lastElementChild.children;
@@ -352,4 +352,3 @@ function testFunc() {
 	}
 }
 */
-

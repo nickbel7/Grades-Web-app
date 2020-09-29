@@ -125,6 +125,7 @@ class UI {
 		`;
 
 		termsDivList.appendChild(termDiv);
+		termDiv.firstElementChild.children[0].setAttribute('contenteditable', true);
 		
 		return termDiv;
 	}
@@ -167,13 +168,16 @@ if (data != null){
 	for (var i = 0 ; i < data.length ; i++) {
 		currentTerm = UI.addTermToStudent();
 		currentTerm.firstElementChild.children[0].innerText = data[i].title;
+		currentTerm.firstElementChild.children[0].setAttribute('contenteditable', false);
 		currentTerm.firstElementChild.children[1].innerText = Math.round(data[i].avg * 10) / 10;
 		currentTerm.lastElementChild.style.display = "none";
 		for (var j = 0 ; j < data[i].subjects.length ; j++) {
 			var currentSubject = UI.addSubjectToTerm(currentTerm.children[1]);
 			currentSubject.children[0].style.display = "none";
 			currentSubject.children[1].innerText = data[i].subjects[j].name;
+			currentSubject.children[1].setAttribute('contenteditable', false);
 			currentSubject.children[2].innerText = data[i].subjects[j].grade;
+			currentSubject.children[2].setAttribute('contenteditable', false);
 		}
 	}
 }
@@ -272,7 +276,7 @@ function saveAll() {
 //			console.log(avg);
 			term1.subjects.push(new Subject(subjectTitle, subjectGrade));
 		}
-		term1.avg = avg / validSubjects;
+		term1.avg = avg / validSubjects == 0 ? 1 : 0;
 		termsTemp[i].firstElementChild.children[1].innerText = Math.round(term1.avg * 10) / 10;
 		
 		Student.addTerm(term1); //add term to Student (loaclStorage)

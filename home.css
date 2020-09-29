@@ -99,15 +99,22 @@ body {
 
 .remove-subject-btn {
 	position: absolute; 
-	left: -40px; 
-	width: 40px; 
+	left: -30px; 
+	width: 30px; 
 	height: 20px; 
-	align-self: center; 
+	align-self: center;
+	/*display: none;*/
+	border-top-left-radius: 5px; 
+	border-bottom-left-radius: 5px; 
 	border: 1px solid red;
 }
 
 .add-subject {
-  display: block;
+  /*display: none;*/
+}
+
+#add-btn,  #remove-btn, #save-btn{
+	/*display: none;*/
 }
 
 * {

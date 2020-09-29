@@ -140,13 +140,14 @@ class UI {
 
 		subjectDiv.innerHTML = `
 			<div class="remove-subject-btn"></div> 
-			<div id="test-field" class="subject-name editable col-9"></div>
-			<div class="subject-grade editable col-3">8</div>
+			<div id="test-field" class="subject-name editable"></div>
+			<div class="subject-grade editable">8</div>
 		`;
 
 		e.appendChild(subjectDiv);
+		subjectDiv.children[1].setAttribute('contenteditable', true);
+		subjectDiv.children[2].setAttribute('contenteditable', true);
 		console.log('subject append works');
-		
 		return subjectDiv;
 	}
 	
@@ -166,7 +167,7 @@ if (data != null){
 	for (var i = 0 ; i < data.length ; i++) {
 		currentTerm = UI.addTermToStudent();
 		currentTerm.firstElementChild.children[0].innerText = data[i].title;
-		currentTerm.firstElementChild.children[1].innerText = data[i].avg;
+		currentTerm.firstElementChild.children[1].innerText = Math.floor(data[i].avg * 10) / 10;
 		for (var j = 0 ; j < data[i].subjects.length ; j++) {
 			var currentSubject = UI.addSubjectToTerm(currentTerm.children[1]);
 			currentSubject.children[1].innerText = data[i].subjects[j].name;
@@ -262,7 +263,8 @@ function saveAll() {
 			term1.subjects.push(new Subject(subjectTitle, subjectGrade));
 		}
 		term1.avg = avg / validSubjects;
-
+		termsTemp[i].firstElementChild.children[1].innerText = Math.floor(term1.avg * 10) / 10;
+		
 		Student.addTerm(term1); //add term to Student (loaclStorage)
 	}
 	

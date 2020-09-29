@@ -57,7 +57,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   align-items: flex start;
-  justify-content: center;
+  /*justify-content: center;*/
   border: 3px solid  orange;
 }
 
@@ -68,11 +68,24 @@ body {
 }
 
 .item-header {
-  height: 2em;
+  min-height: 2em;
   background-color: grey;
   display: flex;
-  justify-content: center;
-  align-content: center;
+  flex-direction: row;
+  /*justify-content: center;
+  align-content: center;*/
+}
+
+.item-header-title {
+	width: 85%;
+	text-align: center;
+}
+
+.item-header-avg {
+	width: 15%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .item-list {
@@ -88,13 +101,15 @@ body {
 }
 
 .subject-name {
-
+	width: 85%;
+	text-align: center;
 }
 
 .subject-grade {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+	width: 15%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .remove-subject-btn {

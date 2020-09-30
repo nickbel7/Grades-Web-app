@@ -99,7 +99,7 @@ class UI {
 		const termDiv = document.createElement('div');
 		termDiv.classList.add("term");
 		termDiv.classList.add("grid-item");
-		termDiv.classList.add("col-3");
+		/*termDiv.classList.add("col-3");*/
 
 		termDiv.innerHTML = `
 		<div class="item-header">
@@ -121,7 +121,7 @@ class UI {
 		</div>
 
 		<!-- ADD BUTTON (should only appear when in edit mode) -->
-		<div class="add-subject btn btn-primary subject">ADD</div>
+		<div class="add-subject-btn btn btn-dark">ADD</div>
 		`;
 
 		termsDivList.appendChild(termDiv);
@@ -140,8 +140,10 @@ class UI {
 		subjectDiv.classList.add("subject");
 
 		subjectDiv.innerHTML = `
-			<div class="remove-subject-btn"></div>
-			<div id="test-field" class="subject-name editable"></div>
+			<div class="remove-subject-div">
+				<div class="remove-subject-btn"></div>
+			</div>
+			<div class="subject-name editable"></div>
 			<div class="subject-grade editable"></div>
 		`;
 
@@ -149,6 +151,7 @@ class UI {
 		subjectDiv.children[1].setAttribute('contenteditable', true);
 		subjectDiv.children[2].setAttribute('contenteditable', true);
 		console.log('subject append works');
+		
 		return subjectDiv;
 	}
 
@@ -173,7 +176,7 @@ if (data != null){
 		currentTerm.lastElementChild.style.display = "none";
 		for (var j = 0 ; j < data[i].subjects.length ; j++) {
 			var currentSubject = UI.addSubjectToTerm(currentTerm.children[1]);
-			currentSubject.children[0].style.display = "none";
+			currentSubject.children[0].firstElementChild.style.display = "none";
 			currentSubject.children[1].innerText = data[i].subjects[j].name;
 			currentSubject.children[1].setAttribute('contenteditable', false);
 			currentSubject.children[2].innerText = data[i].subjects[j].grade;
@@ -205,7 +208,7 @@ function editAll() {
 		editableFields[i].setAttribute('contenteditable', true);
 	}
 	//set the display to "block" to all add-subject buttons
-	var addButtons = document.querySelectorAll(".add-subject");
+	var addButtons = document.querySelectorAll(".add-subject-btn");
 	for (var i = 0 ; i < addButtons.length ; i++) {
 		addButtons[i].style.display = "block";
 	}
@@ -238,7 +241,7 @@ function saveAll() {
 	// localStorage.setItem('name-2', field.innerHTML);
 
 	//set the display to "none" to all add-subject buttons
-	var addButtons = document.querySelectorAll(".add-subject");
+	var addButtons = document.querySelectorAll(".add-subject-btn");
 	for (var i = 0 ; i < addButtons.length ; i++) {
 		addButtons[i].style.display = "none";
 	}
@@ -302,14 +305,14 @@ function rmvDiv() {
 }
 
 //gets the subject list element when an 'add-subject' btn is clicked
-$(document).on("click", ".add-subject", function() {
+$(document).on("click", ".add-subject-btn", function() {
 	subjectsList = $(this)[0].parentElement.children[1];
 	UI.addSubjectToTerm(subjectsList);
 });
 
 //gets the appropriate subject when a 'remove-subject-btn' is clicked
 $(document).on("click", ".remove-subject-btn", function() {
-	selectedSubject = $(this)[0].parentElement;
+	selectedSubject = $(this)[0].parentElement.parentElement;
 	UI.removeSubjectFromTerm(selectedSubject);
 });
 

@@ -60,6 +60,7 @@ body {
 	align-items: flex start;
 	/*justify-content: flex-start;*/
 	border: 3px solid  orange;
+	padding-bottom: 50px;
 }
 
 .grid-item {
@@ -82,12 +83,16 @@ body {
 	flex-direction: row;
 	/*justify-content: center;
 	align-content: center;*/
-	border: 1px solid black;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	border: 2px solid #A6713C;
 }
 
 .item-header-title {
 	width: 85%;
 	text-align: center;
+	background-color: #E6bE93;
+	border-top-left-radius: 9px;
 }
 
 .item-header-avg {
@@ -95,12 +100,14 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	border: 1px solid black;
+	border-left: 4px solid #A6713C;
+	border-top-right-radius: 10px;
 }
 
 .item-list {
 	/* height: 85%; */
 	/*border: 2px solid blue;*/
+	border: 2px solid #A6713C;
 }
 
 .subject {
@@ -109,7 +116,10 @@ body {
 	min-height: 1.8em;
 	flex-direction: row;
 	overflow-wrap: break-word;
-	border: 1px solid black;
+}
+
+.subject:not(:last-child) {
+	border-bottom: 2px solid #A6713C;
 }
 
 .subject-name {
@@ -122,7 +132,7 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	border: 1px solid black;
+	border-left: 2px solid #A6713C;
 }
 
 .remove-subject-div {
@@ -142,17 +152,38 @@ body {
 	/*display: none;*/
 	border-top-left-radius: 5px; 
 	border-bottom-left-radius: 5px; 
-	border: 1px solid red;
+	border: 2px solid red;
 }
 
 .add-subject-btn {
   display: block;
-  width: 40%; 
+  width: 25%; 
   margin: 5px auto;	
+  padding: 2px 5px;
+}
+
+#buttons-container {
+	display: flex; 
+	justify-content: flex-end; 
+	flex-direction: row;
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+}
+
+#edit-btn {
+	padding: 2px 5px;
+	margin: 0 10px;
 }
 
 #add-btn,  #remove-btn, #save-btn{
 	display: none;
+	padding: 2px 5px;
+	margin: 0 5px;
+}
+
+#save-btn {
+	margin: 0 15px;
 }
 
 * {
@@ -166,3 +197,12 @@ body {
 		margin: 1vw 5%; 
 	}
 } 
+
+.color-palette {
+	color: #e6be93; /*1*/
+	color: #a6713c; /*2*/
+	color: #E1B382;
+	color: #C89666; /*3*/
+	color: #2D545E;
+	color: #12343B;
+}

@@ -99,7 +99,6 @@ class UI {
 		const termDiv = document.createElement('div');
 		termDiv.classList.add("term");
 		termDiv.classList.add("grid-item");
-		/*termDiv.classList.add("col-3");*/
 
 		termDiv.innerHTML = `
 		<div class="item-header">

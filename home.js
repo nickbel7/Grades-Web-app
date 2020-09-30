@@ -167,11 +167,15 @@ class UI {
 // Load data from localStorage
 var data = Student.getTerms();
 if (data != null){
+	var studentAvg = 0;
+	var validTerms = 0;
 	for (var i = 0 ; i < data.length ; i++) {
 		currentTerm = UI.addTermToStudent();
 		currentTerm.firstElementChild.children[0].innerText = data[i].title;
 		currentTerm.firstElementChild.children[0].setAttribute('contenteditable', false);
 		currentTerm.firstElementChild.children[1].innerText = Math.round(data[i].avg * 10) / 10;
+		studentAvg += data[i].avg;
+		validTerms += data[i].avg == 0 ? 0 : 1;
 		currentTerm.lastElementChild.style.display = "none";
 		for (var j = 0 ; j < data[i].subjects.length ; j++) {
 			var currentSubject = UI.addSubjectToTerm(currentTerm.children[1]);
@@ -180,8 +184,10 @@ if (data != null){
 			currentSubject.children[1].setAttribute('contenteditable', false);
 			currentSubject.children[2].innerText = data[i].subjects[j].grade;
 			currentSubject.children[2].setAttribute('contenteditable', false);
+			currentSubject.style.borderLeft = Number(data[i].subjects[j].grade >= 5) ? "5px solid #62cc00" : "5px solid #e83030";
 		}
 	}
+	document.querySelector("#student-avg").innerText = Math.round(studentAvg / validTerms * 10) / 10;
 }
 
 //const data = localStorage.getItem('name-2');
@@ -257,6 +263,8 @@ function saveAll() {
 	//Saves all field details to localStorage (persistence)
 	var termsTemp = document.querySelectorAll(".term");
 	console.log(termsTemp);
+	var studentAvg = 0;
+	var validTerms = 0;
 	for (var i = 0 ; i < termsTemp.length ; i++) {
 		var term1 = new Term(); //create new term
 		var title = termsTemp[i].firstElementChild.children[0];
@@ -271,19 +279,23 @@ function saveAll() {
 		for (var index = 0 ; index < subjectsTemp.length ; index++) {
 			var subjectTitle = subjectsTemp[index].children[1].innerText;
 			var subjectGrade = subjectsTemp[index].children[2].innerText;
-			if (!isNaN(parseFloat(subjectGrade))) {
+			if (!isNaN(parseFloat(subjectGrade)) && Number(subjectGrade)>=5) {
 				avg += parseFloat(subjectGrade);
 				validSubjects++;
+				subjectsTemp[index].style.borderLeft = Number(subjectGrade >= 5) ? "5px solid green" : "5px solid red";
 			}
 //			console.log(avg);
 			term1.subjects.push(new Subject(subjectTitle, subjectGrade));
 		}
 		term1.avg = validSubjects != 0 ? avg / validSubjects : 0 ;
 		termsTemp[i].firstElementChild.children[1].innerText = Math.round(term1.avg * 10) / 10;
+		studentAvg += term1.avg;
+		validTerms += term1.avg == 0 ? 0 : 1;
 
-		Student.addTerm(term1); //add term to Student (loaclStorage)
+		Student.addTerm(term1); //add term to Student (localStorage)
 	}
-
+	
+	document.querySelector("#student-avg").innerText = Math.round(studentAvg / validTerms * 10) / 10;
 	alert("Saved successfully");
 	console.log('hello back');
 //	console.log(field.innerHTML);

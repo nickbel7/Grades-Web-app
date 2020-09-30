@@ -155,6 +155,24 @@ body {
 	border: 2px solid red;
 }
 
+.remove-subject-btn:before, .remove-subject-btn:after {
+	position: absolute;
+	left: 12px;
+	top: 2px;
+	content: ' ';
+	height: 12px;
+	width: 2px;
+	background-color: red;
+}
+
+.remove-subject-btn:before {
+	transform: rotate(45deg);
+}
+
+.remove-subject-btn:after {
+	transform: rotate(-45deg);
+}
+
 .add-subject-btn {
   display: block;
   width: 25%; 
@@ -176,7 +194,7 @@ body {
 	margin: 0 10px;
 }
 
-#add-btn,  #remove-btn, #save-btn{
+#add-btn,  #remove-btn, #save-btn {
 	display: none;
 	padding: 2px 5px;
 	margin: 0 5px;

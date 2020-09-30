@@ -74,9 +74,9 @@ body {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: flex start;
-	/*justify-content: flex-start;*/
 	padding-bottom: 50px;
-	border: 3px solid  black;
+	border: 3px solid  black;	
+	/*justify-content: flex-start;*/
 }
 
 .term {

@@ -184,7 +184,7 @@ if (data != null){
 			currentSubject.children[1].setAttribute('contenteditable', false);
 			currentSubject.children[2].innerText = data[i].subjects[j].grade;
 			currentSubject.children[2].setAttribute('contenteditable', false);
-			currentSubject.style.borderLeft = Number(data[i].subjects[j].grade >= 5) ? "5px solid #62cc00" : "5px solid #e83030";
+			currentSubject.style.borderLeft = Number(data[i].subjects[j].grade >= 5) ? "5px solid #62CC00" : "5px solid #E83030";
 		}
 	}
 	document.querySelector("#student-avg").innerText = Math.round(studentAvg / validTerms * 10) / 10;
@@ -282,8 +282,8 @@ function saveAll() {
 			if (!isNaN(parseFloat(subjectGrade)) && Number(subjectGrade)>=5) {
 				avg += parseFloat(subjectGrade);
 				validSubjects++;
-				subjectsTemp[index].style.borderLeft = Number(subjectGrade >= 5) ? "5px solid green" : "5px solid red";
 			}
+			subjectsTemp[index].style.borderLeft = Number(subjectGrade >= 5) ? "5px solid #62CC00" : "5px solid #E83030";
 //			console.log(avg);
 			term1.subjects.push(new Subject(subjectTitle, subjectGrade));
 		}
@@ -296,7 +296,8 @@ function saveAll() {
 	}
 	
 	document.querySelector("#student-avg").innerText = Math.round(studentAvg / validTerms * 10) / 10;
-	alert("Saved successfully");
+	/*alert("Saved successfully");*/
+	console.log('Saved successfully');
 	console.log('hello back');
 //	console.log(field.innerHTML);
 }

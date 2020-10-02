@@ -150,7 +150,7 @@ class UI {
 		subjectDiv.children[1].setAttribute('contenteditable', true);
 		subjectDiv.children[2].setAttribute('contenteditable', true);
 		console.log('subject append works');
-		
+
 		return subjectDiv;
 	}
 
@@ -184,10 +184,10 @@ if (data != null){
 			currentSubject.children[1].setAttribute('contenteditable', false);
 			currentSubject.children[2].innerText = data[i].subjects[j].grade;
 			currentSubject.children[2].setAttribute('contenteditable', false);
-			currentSubject.style.borderLeft = Number(data[i].subjects[j].grade >= 5) ? "5px solid #62CC00" : "5px solid #E83030";
+			currentSubject.style.borderLeft = (Number(data[i].subjects[j].grade >= 5) || data[i].subjects[j].grade.toLowerCase() == 'p' ) ? "5px solid #62CC00" : "5px solid #E83030";
 		}
 	}
-	document.querySelector("#student-avg").innerText = Math.round(studentAvg / validTerms * 10) / 10;
+	document.querySelector("#student-avg").innerText = Math.round(studentAvg / validTerms * 100) / 100;
 }
 
 //const data = localStorage.getItem('name-2');
@@ -283,7 +283,7 @@ function saveAll() {
 				avg += parseFloat(subjectGrade);
 				validSubjects++;
 			}
-			subjectsTemp[index].style.borderLeft = Number(subjectGrade >= 5) ? "5px solid #62CC00" : "5px solid #E83030";
+			subjectsTemp[index].style.borderLeft = (Number(subjectGrade >= 5) || subjectGrade.toLowerCase() == 'p') ? "5px solid #62CC00" : "5px solid #E83030";
 //			console.log(avg);
 			term1.subjects.push(new Subject(subjectTitle, subjectGrade));
 		}
@@ -294,8 +294,8 @@ function saveAll() {
 
 		Student.addTerm(term1); //add term to Student (localStorage)
 	}
-	
-	document.querySelector("#student-avg").innerText = Math.round(studentAvg / validTerms * 10) / 10;
+
+	document.querySelector("#student-avg").innerText = Math.round(studentAvg / validTerms * 100) / 100;
 	/*alert("Saved successfully");*/
 	console.log('Saved successfully');
 	console.log('hello back');
@@ -326,6 +326,12 @@ $(document).on("click", ".add-subject-btn", function() {
 $(document).on("click", ".remove-subject-btn", function() {
 	selectedSubject = $(this)[0].parentElement.parentElement;
 	UI.removeSubjectFromTerm(selectedSubject);
+});
+
+// Sidebar toggle button
+$('#sidebar-icon').on('click', function() {
+	$('#menu').toggleClass('col-5');
+	$('#grid').toggleClass('col-10');
 });
 
 // var term1 = new Term();

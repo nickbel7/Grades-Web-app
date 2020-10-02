@@ -10,6 +10,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="Chart.js-2.9.3/dist/Chart.js"></script>
     <link rel="stylesheet" type="text/css" href="Chart.js-2.9.3/dist/Chart.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="home.css">
 
     <title>Home</title>
@@ -18,35 +19,54 @@
    	<!-- APPLICATION CONTAINER -->
     <div class="container">
 
-      <!-- LEFT SIDE PANEL -->
-      <div id="menu" class="col-0 col-sm-2">
+      <!-- LEFT SIDE PANEL-->
+      <div id="menu" class="col-0 col-md-2">
         <div id="menu-logo"></div>
-        <div id="menu-list"></div>
+        <div id="menu-list">
+          <div class="menu-list-item">
+            <a href="">
+              HOME
+            </a>
+          </div>
+          <div class="menu-list-item">
+            <a href="chartjs-test.html">
+              STATISTICS
+            </a>
+          </div>
+        </div>
       </div>
 
       <!-- APPLICATION PANEL -->
-      <div id="grid" class="col-12 col-sm-10">
+      <div id="grid" class="col-12 col-md-10">
       	<!-- HEADER (should include field for name and average grade) -->
-        <div id="grid-header">        	
-        	Average Grade : <div id="student-avg"></div> 	
+        <div id="grid-header">
+
+          <!-- LEFT SIDE MENU TOGGLE BUTTON -->
+          <div id="sidebar-icon" class="d-md-none">
+             <a href="#" id="msbo">
+               <i class="fa fa-bars"></i>
+             </a>
+          </div>
+
+        	Average Grade : <div id="student-avg"></div>
         </div>
 
         <!-- GRID FOR TERMS -->
         <div id="grid-matrix">
-			
+
         </div>
-        
+
         <!-- FUNCTION BUTTONS -->
         <div id="buttons-container">
 	        <div id="add-btn" class="add-grid-item btn btn-dark grid-item">ADD Term</div>
 	        <div id="remove-btn" class="add-grid-item btn btn-dark grid-item">REMOVE Term</div>
 	        <div id="edit-btn" class="add-grid-item btn btn-dark grid-item">EDIT</div>
 	        <div id="save-btn" class="add-grid-item btn btn-dark grid-item">SAVE</div>
-	       	<!-- 
+	       	<!--
 	        <div id="test-btn" class="add-grid-item btn btn-dark grid-item col-5">TEST</div>
 	         -->
         </div>
-         
+
       </div>
     </div>
 

@@ -289,15 +289,17 @@ body {
 	margin: 0 15px;
 }
 
-* {
-	/*border : 1px solid red;*/
-}
-
 @media only screen and (max-width: 1000px) {
 	.term {
 		width: 40%;
 		padding: 0;
 		margin: 1vw 5%;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	#menu {
+		display: none;
 	}
 }
 

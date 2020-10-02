@@ -331,6 +331,7 @@ $(document).on("click", ".remove-subject-btn", function() {
 // Sidebar toggle button
 $('#sidebar-icon').on('click', function() {
 	$('#menu').toggleClass('col-5');
+	$('#menu').toggleClass('d-block');
 	$('#grid').toggleClass('col-10');
 });
 

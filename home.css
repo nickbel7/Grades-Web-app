@@ -139,6 +139,7 @@ body {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: flex start;
+	padding: 0 2vw;
 	padding-bottom: 50px;
 	border: 2px solid  black;
 	/*justify-content: flex-start;*/

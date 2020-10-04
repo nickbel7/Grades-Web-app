@@ -335,6 +335,27 @@ $('#sidebar-icon').on('click', function() {
 	$('#grid').toggleClass('col-10');
 });
 
+// View mode controls
+var viewMode = 'home';
+$('#home-btn').on('click', function() {
+	viewMode = 'home';
+	updateViewMode();
+});
+
+$('#charts-btn').on('click', function() {
+	viewMode = 'charts';
+	updateViewMode();
+});
+
+function updateViewMode() {
+	document.querySelector("#grid-matrix").style.display = (viewMode == 'home' ? 'flex' : 'none');
+	document.querySelector("#charts-container").style.display = (viewMode == 'charts' ? 'flex' : 'none');
+}
+updateViewMode();
+
+
+
+
 // var term1 = new Term();
 // term1.title = 'Term #1';
 // term1.avg = 8.2;

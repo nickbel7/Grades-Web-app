@@ -23,15 +23,11 @@
       <div id="menu" class="col-0 col-md-2">
         <div id="menu-logo"></div>
         <div id="menu-list">
-          <div class="menu-list-item">
-            <a href="">
-              HOME
-            </a>
+          <div id="home-btn" class="menu-list-item">
+            HOME
           </div>
-          <div class="menu-list-item">
-            <a href="chartjs-test.html">
-              STATISTICS
-            </a>
+          <div id="charts-btn" class="menu-list-item">
+            STATISTICS
           </div>
         </div>
       </div>
@@ -53,7 +49,11 @@
 
         <!-- GRID FOR TERMS -->
         <div id="grid-matrix">
+        </div>
 
+        <!-- CONTAINER FOR CHARTS -->
+        <div id="charts-container" style="height: 400px; width: 400px; padding: 40px; border: 2px solid black;">
+          <canvas id="myChart" width="400" height="400"></canvas>
         </div>
 
         <!-- FUNCTION BUTTONS -->
@@ -71,6 +71,6 @@
     </div>
 
     <script src="home.js"></script>
-
+    <script src="chartjs.js"></script>
   </body>
 </html>

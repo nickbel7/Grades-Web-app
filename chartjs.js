@@ -5,22 +5,23 @@ if (localStorage.getItem('terms') === null){
   terms = JSON.parse(localStorage.getItem('terms'));
 }
 
+// Chart #1 (grades distribution)
 let gradeD = [0, 0, 0, 0, 0, 0];
 for (var i = 0 ; i < terms.length ; i++) {
   var subjects = terms[i].subjects;
   for (var j = 0 ; j < subjects.length ; j++) {
     if (Number(subjects[j].grade) >= 5 && Number(subjects[j].grade) <= 10) {
-      gradeD[parseInt(subjects[j].grade)-5]++;
+      gradeD[10-parseInt(subjects[j].grade)]++;
     }
   }
 }
 
-var ctx = document.getElementById('myChart');
+var ctx1 = document.getElementById('myChart1');
 
-var myChart = new Chart(ctx, {
+var myChart1 = new Chart(ctx1, {
     type: 'pie',
     data: {
-        labels: ['5', '6', '7', '8', '9', '10'],
+        labels: ['10', '9', '8', '7', '6', '5'],
         datasets: [{
             data: gradeD,
             backgroundColor: [
@@ -41,12 +42,39 @@ var myChart = new Chart(ctx, {
             ],
             borderWidth: 1
         }]
+    }
+});
+
+// Chart #2 (average grade progression across terms)
+let labels = [];
+let avgGrades = [];
+for (var i = 0 ; i < terms.length ; i++) {
+  labels.push(terms[i].title);
+  avgGrades.push(terms[i].avg);
+}
+
+var ctx2 = document.getElementById('myChart2');
+
+var myChart2 = new Chart(ctx2, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [{
+        data: avgGrades,
+        borderColor: 'rgba(75, 192, 192, 1)',
+        backgroundColor: 'rgba(75, 192, 192, 0)',
+        borderWidth: 2
+      }]
     },
     options: {
+      scales: {
            yAxes: [{
                ticks: {
-                   beginAtZero: true
+                   // beginAtZero: true
+                   min: 5,
+                   max: 10,
                }
            }]
-    }
+        }
+    },
 });

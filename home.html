@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="Chart.js-2.9.3/dist/Chart.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="charts.css">
 
     <title>Home</title>
   </head>
@@ -23,10 +24,10 @@
       <div id="menu" class="col-0 col-md-2">
         <div id="menu-logo"></div>
         <div id="menu-list">
-          <div id="home-btn" class="menu-list-item">
+          <div id="home-btn" class="menu-list-item" style="cursor: pointer;">
             HOME
           </div>
-          <div id="charts-btn" class="menu-list-item">
+          <div id="charts-btn" class="menu-list-item" style="cursor: pointer;">
             STATISTICS
           </div>
         </div>
@@ -39,9 +40,7 @@
 
           <!-- LEFT SIDE MENU TOGGLE BUTTON -->
           <div id="sidebar-icon" class="d-md-none">
-             <a href="#" id="msbo">
-               <i class="fa fa-bars"></i>
-             </a>
+             <i class="fa fa-bars"></i>
           </div>
 
         	Average Grade : <div id="student-avg"></div>
@@ -52,8 +51,13 @@
         </div>
 
         <!-- CONTAINER FOR CHARTS -->
-        <div id="charts-container" style="height: 400px; width: 400px; padding: 40px; border: 2px solid black;">
-          <canvas id="myChart" width="400" height="400"></canvas>
+        <div id="charts-container">
+          <div id="chart1" class="col-12 col-md-6">
+            <canvas id="myChart1"></canvas>
+          </div>
+          <div id="chart2" class="col-12 col-md-6">
+            <canvas id="myChart2"></canvas>
+          </div>
         </div>
 
         <!-- FUNCTION BUTTONS -->

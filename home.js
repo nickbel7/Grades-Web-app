@@ -14,23 +14,7 @@ class Term {
 		this.avg = null;
 		this.subjects = [];
 	}
-	/*
-	static getSubjects() {
-		let terms = Student.getTerms();
-		let currentTerm;
-		if (terms == null)
-			return;
-		else {
-			terms.forEach((term, index) => {
-				if (term.id === id) {
-					currentTerm = terms[index];
-				}
-			});
-		}
 
-		return currentTerm.subjects;
-	}
-	*/
 	/* mallon axreiasto*/
 	static getSubjects() {
 		return this.subjects;
@@ -67,13 +51,6 @@ class Student {
 
 	static removeTerm(id) {
 		const terms = Student.getTerms();
-		/*
-		terms.forEach((term, index) => {
-			if (term.id === id) {
-				terms.splice(index, 1);
-			}
-		});
-		*/
 		terms.pop();
 
 		localStorage.setItem('terms', JSON.stringify(terms));
@@ -86,12 +63,6 @@ class Student {
 }
 
 class UI {
-	/*
-	static displayTerms() {
-		const terms = Student.getTerms();
-
-		terms.forEach((term) => UI.addTermToList(term));
-	}*/
 
 	static addTermToStudent() {
 		const termsDivList = document.querySelector('#grid-matrix');
@@ -149,7 +120,6 @@ class UI {
 		e.appendChild(subjectDiv);
 		subjectDiv.children[1].setAttribute('contenteditable', true);
 		subjectDiv.children[2].setAttribute('contenteditable', true);
-		console.log('subject append works');
 
 		return subjectDiv;
 	}
@@ -157,8 +127,6 @@ class UI {
 	static removeSubjectFromTerm(s) {
 		var parent = s.parentElement;
 		parent.removeChild(s);
-		console.log('subject remove works');
-//		console.log(parent);
 	}
 
 }
@@ -224,7 +192,6 @@ function editAll() {
 		rmvButtons[i].style.display = "block";
 	}
 
-	console.log('hello');
 }
 
 // SAVE / Undos the ability to edit all editable fields / hide add buttons
@@ -243,8 +210,6 @@ function saveAll() {
 		editableFields[i].setAttribute('contenteditable', false);
 	}
 
-	// localStorage.setItem('name-2', field.innerHTML);
-
 	//set the display to "none" to all add-subject buttons
 	var addButtons = document.querySelectorAll(".add-subject-btn");
 	for (var i = 0 ; i < addButtons.length ; i++) {
@@ -262,7 +227,6 @@ function saveAll() {
 
 	//Saves all field details to localStorage (persistence)
 	var termsTemp = document.querySelectorAll(".term");
-	console.log(termsTemp);
 	var studentAvg = 0;
 	var validTerms = 0;
 	for (var i = 0 ; i < termsTemp.length ; i++) {
@@ -273,7 +237,6 @@ function saveAll() {
 //		term1.avg = avg.innerText; //add term avg grade
 		var avg = 0;
 		var validSubjects = 0;
-//		console.log(termsTemp[i].children[1].children);
 		var subjectsTemp = termsTemp[i].children[1].children;
 //		var subjectsTemp = termsTemp[i].lastElementChild.children;
 		for (var index = 0 ; index < subjectsTemp.length ; index++) {
@@ -284,7 +247,6 @@ function saveAll() {
 				validSubjects++;
 			}
 			subjectsTemp[index].style.borderLeft = (Number(subjectGrade >= 5) || subjectGrade.toLowerCase() == 'p') ? "5px solid #62CC00" : "5px solid #E83030";
-//			console.log(avg);
 			term1.subjects.push(new Subject(subjectTitle, subjectGrade));
 		}
 		term1.avg = validSubjects != 0 ? avg / validSubjects : 0 ;
@@ -296,10 +258,7 @@ function saveAll() {
 	}
 
 	document.querySelector("#student-avg").innerText = Math.round(studentAvg / validTerms * 100) / 100;
-	/*alert("Saved successfully");*/
-	console.log('Saved successfully');
-	console.log('hello back');
-//	console.log(field.innerHTML);
+	
 }
 
 // adds a new term DIV
@@ -336,62 +295,26 @@ $('#sidebar-icon').on('click', function() {
 });
 
 // View mode controls
-var viewMode = 'home';
+var viewMode = 'charts';
 $('#home-btn').on('click', function() {
 	viewMode = 'home';
 	updateViewMode();
+	$('#menu').toggleClass('col-5');
+	$('#menu').toggleClass('d-block');
+	$('#grid').toggleClass('col-10');
 });
 
 $('#charts-btn').on('click', function() {
 	viewMode = 'charts';
 	updateViewMode();
+	$('#menu').toggleClass('col-5');
+	$('#menu').toggleClass('d-block');
+	$('#grid').toggleClass('col-10');
 });
 
 function updateViewMode() {
 	document.querySelector("#grid-matrix").style.display = (viewMode == 'home' ? 'flex' : 'none');
+	document.querySelector("#buttons-container").style.display = (viewMode == 'home' ? 'flex' : 'none');
 	document.querySelector("#charts-container").style.display = (viewMode == 'charts' ? 'flex' : 'none');
 }
 updateViewMode();
-
-
-
-
-// var term1 = new Term();
-// term1.title = 'Term #1';
-// term1.avg = 8.2;
-// term1.subjects.push(new Subject('subject1', 'grade1'));
-// term1.subjects.push(new Subject('subject2', 'grade2'));
-// Student.addTerm(term1);
-//
-// var term2 = new Term();
-// Student.addTerm(term2);
-
-/*
-var btnTest = document.querySelector("#test-btn");
-btnTest.addEventListener('click', testFunc);
-function testFunc() {
-	//Removes all Terms from localStorage
-	localStorage.removeItem('terms');
-
-	var termsTemp = document.querySelectorAll(".term");
-	console.log(termsTemp);
-	for (var i = 0 ; i < termsTemp.length ; i++) {
-		var term1 = new Term(); //create new term
-		var title = termsTemp[i].firstElementChild.children[0];
-		term1.title = title.innerText; //add term title
-		var avg = termsTemp[i].firstElementChild.children[1];
-		term1.avg = avg.innerText; //add term avg grade
-
-//		console.log(termsTemp[i].children[1].children);
-		var subjectsTemp = termsTemp[i].children[1].children;
-//		var subjectsTemp = termsTemp[i].lastElementChild.children;
-		for (var index = 0 ; index < subjectsTemp.length ; index++) {
-			var subjectTitle = subjectsTemp[index].children[1].innerText;
-			var subjectGrade = subjectsTemp[index].children[2].innerText;
-			term1.subjects.push(new Subject(subjectTitle, subjectGrade));
-		}
-
-		Student.addTerm(term1); //add term to Student (loaclStorage)
-	}
-}
-*/

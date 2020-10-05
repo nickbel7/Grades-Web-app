@@ -70,7 +70,6 @@ var myChart2 = new Chart(ctx2, {
       scales: {
            yAxes: [{
                ticks: {
-                   // beginAtZero: true
                    min: 5,
                    max: 10,
                }
@@ -78,3 +77,31 @@ var myChart2 = new Chart(ctx2, {
         }
     },
 });
+
+// Chart #3 (Progress until graduation)
+var bar = new ProgressBar.Line(chart3,
+{
+  strokeWidth: 3,
+  color: 'rgba(75, 192, 192, 0.8)',
+  trailColor: '#eee',
+  trailWidth: 3,
+  svgStyle: {width: '100%', height: '100%'},
+  text: {
+    style: {
+      color: '#999',
+      position: 'absolute',
+      right: '50%',
+      top: '100%',
+      padding: 0,
+      margin: 0,
+    },
+    autoStyleContainer: false
+  },
+  from: {color: '#FFEA82'},
+  to: {color: '#ED6A5A'},
+  step: (state, bar) => {
+    bar.setText(Math.round(bar.value() * 100) + '%');
+  }
+});
+
+bar.animate(document.querySelectorAll(".subject").length / 55);

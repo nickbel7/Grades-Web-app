@@ -3,12 +3,19 @@
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  /* border: 2px solid black; */
   margin-bottom: 50px;
 }
 
 #chart1, #chart2 {
   width: 50%;
-  /* border-right: 1px solid black; */
   margin: 2vh 0;
+}
+
+#chart3 {
+  display: block;
+  width: 50%;
+  margin: 2vh auto;
+  padding: 2vh 0;
+  position: relative;
+
 }

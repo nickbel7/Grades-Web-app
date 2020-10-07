@@ -50,7 +50,7 @@ let labels = [];
 let avgGrades = [];
 for (var i = 0 ; i < terms.length ; i++) {
   labels.push(terms[i].title);
-  avgGrades.push(terms[i].avg);
+  avgGrades.push(Math.round(terms[i].avg * 10)  / 10);
 }
 
 var ctx2 = document.getElementById('myChart2');

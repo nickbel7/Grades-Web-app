@@ -258,7 +258,7 @@ function saveAll() {
 	}
 
 	document.querySelector("#student-avg").innerText = Math.round(studentAvg / validTerms * 100) / 100;
-	
+
 }
 
 // adds a new term DIV
@@ -295,7 +295,7 @@ $('#sidebar-icon').on('click', function() {
 });
 
 // View mode controls
-var viewMode = 'charts';
+var viewMode = 'home';
 $('#home-btn').on('click', function() {
 	viewMode = 'home';
 	updateViewMode();

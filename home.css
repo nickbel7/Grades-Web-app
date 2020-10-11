@@ -185,8 +185,10 @@ body {
 
 .subject-grade {
 	width: 15%;
-	display: block;
+	display: grid;
 	text-align: center;
+	justify-content: center;
+	align-items: center;
 	border-left: 2px solid #A6713C;
 }
 

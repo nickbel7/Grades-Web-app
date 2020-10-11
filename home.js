@@ -295,9 +295,7 @@ $('#sidebar-icon').on('click', function() {
 });
 
 // View mode controls
-var chartsScript = document.createElement('script');
-chartsScript.src = 'chartjs.js';
-
+var chartsScript;
 var viewMode = 'home';
 $('#home-btn').on('click', function() {
 	viewMode = 'home';
@@ -314,8 +312,13 @@ $('#charts-btn').on('click', function() {
 	$('#menu').toggleClass('d-block');
 	$('#grid').toggleClass('col-10');
 
-	if (!document.body.contains(chartsScript))
-		document.body.appendChild(chartsScript);
+	if (document.body.contains(chartsScript)) {
+		document.body.removeChild(chartsScript);
+	}
+
+	chartsScript = document.createElement('script');
+	chartsScript.src = 'chartjs.js';
+	document.body.appendChild(chartsScript);
 });
 
 function updateViewMode() {

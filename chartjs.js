@@ -1,4 +1,4 @@
-let terms;
+var terms;
 if (localStorage.getItem('terms') === null){
   terms = [];
 } else {
@@ -6,7 +6,7 @@ if (localStorage.getItem('terms') === null){
 }
 
 // Chart #1 (grades distribution)
-let gradeD = [0, 0, 0, 0, 0, 0];
+var gradeD = [0, 0, 0, 0, 0, 0];
 for (var i = 0 ; i < terms.length ; i++) {
   var subjects = terms[i].subjects;
   for (var j = 0 ; j < subjects.length ; j++) {
@@ -16,7 +16,8 @@ for (var i = 0 ; i < terms.length ; i++) {
   }
 }
 
-var ctx1 = document.getElementById('myChart1');
+document.querySelector("#chart1").innerHTML = '<canvas id="myChart1"></canvas>';
+var ctx1 = document.querySelector("#myChart1");
 
 var myChart1 = new Chart(ctx1, {
     type: 'pie',
@@ -46,13 +47,14 @@ var myChart1 = new Chart(ctx1, {
 });
 
 // Chart #2 (average grade progression across terms)
-let labels = [];
-let avgGrades = [];
+var labels = [];
+var avgGrades = [];
 for (var i = 0 ; i < terms.length ; i++) {
   labels.push(terms[i].title);
   avgGrades.push(Math.round(terms[i].avg * 10)  / 10);
 }
 
+document.querySelector("#chart2").innerHTML = '<canvas id="myChart2"></canvas>';
 var ctx2 = document.getElementById('myChart2');
 
 var myChart2 = new Chart(ctx2, {
@@ -79,7 +81,9 @@ var myChart2 = new Chart(ctx2, {
 });
 
 // Chart #3 (Progress until graduation)
-var bar = new ProgressBar.Line(chart3,
+if (typeof bar != 'undefined')
+  document.querySelector("#chart3").innerHTML = '<div style="text-align: center">Progress για πτυχείο</div>';
+bar = new ProgressBar.Line(chart3,
 {
   strokeWidth: 3,
   color: 'rgba(75, 192, 192, 0.8)',

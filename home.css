@@ -98,6 +98,8 @@ body {
 }
 
 #student-avg {
+	min-height: 40px;
+	min-width: 40px;
 	padding: 0 10px;
 	margin: 0 10px;
 	border: 2px solid #A6713C;
@@ -183,9 +185,8 @@ body {
 
 .subject-grade {
 	width: 15%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	display: block;
+	text-align: center;
 	border-left: 2px solid #A6713C;
 }
 

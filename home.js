@@ -155,7 +155,7 @@ if (data != null){
 			currentSubject.style.borderLeft = (Number(data[i].subjects[j].grade >= 5) || data[i].subjects[j].grade.toLowerCase() == 'p' ) ? "5px solid #62CC00" : "5px solid #E83030";
 		}
 	}
-	document.querySelector("#student-avg").innerText = Math.round(studentAvg / validTerms * 100) / 100;
+	document.querySelector("#student-avg").innerText = validTerms != 0 ? Math.round(studentAvg / validTerms * 100) / 100 : "";
 }
 
 //const data = localStorage.getItem('name-2');
@@ -257,7 +257,7 @@ function saveAll() {
 		Student.addTerm(term1); //add term to Student (localStorage)
 	}
 
-	document.querySelector("#student-avg").innerText = Math.round(studentAvg / validTerms * 100) / 100;
+	document.querySelector("#student-avg").innerText = validTerms != 0 ? Math.round(studentAvg / validTerms * 100) / 100 : "";
 
 }
 
@@ -295,6 +295,9 @@ $('#sidebar-icon').on('click', function() {
 });
 
 // View mode controls
+var chartsScript = document.createElement('script');
+chartsScript.src = 'chartjs.js';
+
 var viewMode = 'home';
 $('#home-btn').on('click', function() {
 	viewMode = 'home';
@@ -310,6 +313,9 @@ $('#charts-btn').on('click', function() {
 	$('#menu').toggleClass('col-5');
 	$('#menu').toggleClass('d-block');
 	$('#grid').toggleClass('col-10');
+
+	if (!document.body.contains(chartsScript))
+		document.body.appendChild(chartsScript);
 });
 
 function updateViewMode() {

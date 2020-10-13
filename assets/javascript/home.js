@@ -327,3 +327,10 @@ function updateViewMode() {
 	document.querySelector("#charts-container").style.display = (viewMode == 'charts' ? 'flex' : 'none');
 }
 updateViewMode();
+
+// Dark Mode Toggle switch
+var darkMode = false;
+$('#darkMode-switch').on('click', function() {
+	document.querySelector("body").style.background = (darkMode == false ? "#3B444B" : "none") ;
+	darkMode = (darkMode == false ? true : false );
+});

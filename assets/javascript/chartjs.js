@@ -86,7 +86,7 @@ if (typeof bar != 'undefined')
 bar = new ProgressBar.Line(chart3,
 {
   strokeWidth: 3,
-  color: 'rgba(75, 192, 192, 0.8)',
+  color: '#90EE90',
   trailColor: '#eee',
   trailWidth: 3,
   svgStyle: {width: '100%', height: '100%'},

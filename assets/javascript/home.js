@@ -317,7 +317,7 @@ $('#charts-btn').on('click', function() {
 	}
 
 	chartsScript = document.createElement('script');
-	chartsScript.src = 'chartjs.js';
+	chartsScript.src = 'assets/javascript/chartjs.js';
 	document.body.appendChild(chartsScript);
 });
 

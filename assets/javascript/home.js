@@ -329,8 +329,18 @@ function updateViewMode() {
 updateViewMode();
 
 // Dark Mode Toggle switch
-var darkMode = false;
+darkMode = false;
+darkMode = JSON.parse(localStorage.getItem('darkMode'));
+updateDarkMode();
 $('#darkMode-switch').on('click', function() {
-	document.querySelector("body").style.background = (darkMode == false ? "#3B444B" : "none") ;
 	darkMode = (darkMode == false ? true : false );
+	localStorage.setItem('darkMode', JSON.stringify(darkMode));
+	updateDarkMode();
 });
+
+function updateDarkMode() {
+	document.querySelector("body").style.background = (darkMode == true ? "#3B444B" : "none") ;
+	$("#darkMode-switch").prop("checked", (darkMode == true ? true : false));
+	$(".item-header-avg, #grid-header, #chart3").css({"color" : (darkMode == true ? "#fbf4ec" : "black")});
+	$("#grid-header, #menu-logo, #menu").css({"border-color" : (darkMode == true ? "#E6bE93" : "#A6713C")});
+}

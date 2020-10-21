@@ -343,4 +343,5 @@ function updateDarkMode() {
 	$("#darkMode-switch").prop("checked", (darkMode == true ? true : false));
 	$(".item-header-avg, #grid-header, #chart3").css({"color" : (darkMode == true ? "#fbf4ec" : "black")});
 	$("#grid-header, #menu-logo, #menu").css({"border-color" : (darkMode == true ? "#E6bE93" : "#A6713C")});
+	$(".fa").css({"color" : (darkMode == true ? "#fbf4ec" : "black")});
 }

@@ -71,11 +71,19 @@ var myChart2 = new Chart(ctx2, {
     options: {
       scales: {
            yAxes: [{
+       //         gridLines: {
+		   // color: 'rgba(255, 255, 255, 0.5)'
+       //         },
                ticks: {
                    min: 5,
                    max: 10,
                }
            }]
+           // xAxes: [{
+           //     gridLines: {
+           //  		   color: 'rgba(255, 255, 255, 0.5)'
+           //     }
+           // }]
         }
     },
 });

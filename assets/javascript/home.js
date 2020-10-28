@@ -158,14 +158,6 @@ if (data != null){
 	document.querySelector("#student-avg").innerText = validTerms != 0 ? Math.round(studentAvg / validTerms * 100) / 100 : "";
 }
 
-//const data = localStorage.getItem('name-2');
-//document.querySelector("#test-field").innerHTML = data;
-
-
-
-//load some data in local storage
-//localStorage.setItem('name','Nick');
-
 // EDIT / Makes all appropriate fields Editable
 var btnEdit = document.querySelector("#edit-btn");
 btnEdit.addEventListener('click', editAll);
@@ -233,12 +225,9 @@ function saveAll() {
 		var term1 = new Term(); //create new term
 		var title = termsTemp[i].firstElementChild.children[0];
 		term1.title = title.innerText; //add term title
-//		var avg = termsTemp[i].firstElementChild.children[1];
-//		term1.avg = avg.innerText; //add term avg grade
 		var avg = 0;
 		var validSubjects = 0;
 		var subjectsTemp = termsTemp[i].children[1].children;
-//		var subjectsTemp = termsTemp[i].lastElementChild.children;
 		for (var index = 0 ; index < subjectsTemp.length ; index++) {
 			var subjectTitle = subjectsTemp[index].children[1].innerText;
 			var subjectGrade = subjectsTemp[index].children[2].innerText;

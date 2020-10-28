@@ -4,6 +4,7 @@ if (localStorage.getItem('terms') === null){
 } else {
   terms = JSON.parse(localStorage.getItem('terms'));
 }
+var passedSubjects = 0;
 
 // Chart #1 (grades distribution)
 var gradeD = [0, 0, 0, 0, 0, 0];
@@ -13,6 +14,7 @@ for (var i = 0 ; i < terms.length ; i++) {
     if (Number(subjects[j].grade) >= 5 && Number(subjects[j].grade) <= 10) {
       gradeD[10-parseInt(subjects[j].grade)]++;
     }
+    passedSubjects += (Number(subjects[j].grade >= 5) || subjects[j].grade.toLowerCase() == 'p' ) ? 1 : 0;
   }
 }
 
@@ -116,4 +118,4 @@ bar = new ProgressBar.Line(chart3,
   }
 });
 
-bar.animate(document.querySelectorAll(".subject").length / 55);
+bar.animate(passedSubjects / 56);

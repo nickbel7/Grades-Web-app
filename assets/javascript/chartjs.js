@@ -73,19 +73,23 @@ var myChart2 = new Chart(ctx2, {
     options: {
       scales: {
            yAxes: [{
-       //         gridLines: {
-		   // color: 'rgba(255, 255, 255, 0.5)'
-       //         },
+               //
+               // gridLines: {
+		           //     color: 'rgba(255, 255, 255, 0.3)'
+               // },
+               //
                ticks: {
                    min: 5,
                    max: 10,
                }
            }]
+           //
            // xAxes: [{
            //     gridLines: {
-           //  		   color: 'rgba(255, 255, 255, 0.5)'
+           //  		   color: 'rgba(255, 255, 255, 0.3)'
            //     }
            // }]
+           //
         }
     },
 });
@@ -119,3 +123,5 @@ bar = new ProgressBar.Line(chart3,
 });
 
 bar.animate(passedSubjects / 56);
+
+myChart2.options.scales.yAxes.gridLines.color = rgba(255, 255, 255, 0.8);

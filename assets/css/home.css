@@ -42,6 +42,15 @@ body {
 	border-bottom: 2px solid #A6713C;
 }
 
+#copyright-label {
+	position: fixed;
+	bottom: 2px;
+	left: 2px;
+	font-size: 8pt;
+	font-weight: bold;
+	opacity: 0.5;
+}
+
 #menu-list {
 	/* border: 2px solid black; */
 	width: 100%;

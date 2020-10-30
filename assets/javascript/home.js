@@ -247,7 +247,7 @@ function saveAll() {
 	}
 
 	document.querySelector("#student-avg").innerText = validTerms != 0 ? Math.round(studentAvg / validTerms * 100) / 100 : "";
-
+	updateDarkMode();
 }
 
 // adds a new term DIV

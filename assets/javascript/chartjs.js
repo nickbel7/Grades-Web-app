@@ -123,5 +123,3 @@ bar = new ProgressBar.Line(chart3,
 });
 
 bar.animate(passedSubjects / 56);
-
-myChart2.options.scales.yAxes.gridLines.color = rgba(255, 255, 255, 0.8);
